@@ -1,0 +1,115 @@
+# Date: 19th October, 2026
+
+# genome_clean: DNA Sequence Cleaning and Analysis
+
+A beginner-friendly command-line Python program for loading CSV files, cleaning DNA sequences, counting bases, calculating GC content, and plotting a GC-content histogram.
+
+## 1. Requirements
+
+- Python **3.14.5 or newer**
+- The supplied `genomic_data_2.csv` file (or another CSV file with sequence data)
+- Packages: `pandas` **3.0.6 or newer**, 
+            `numpy` **2.0.3 or newer**, 
+            `matplotlib` **3.11.2 or newer**, 
+            `tabulate` **0.10.0 or newer**, and 
+            `openpyxl` **3.1.5 or newer**
+
+      `pathlib`, `sys`, and `re` are part of Python's standard library and do not need separate installation.
+
+## 2. Install Python
+
+1. Visit <https://www.python.org/downloads/>.
+2. Download Python 3.14.5 or newer.
+3. Run the installer and tick **Add Python to PATH** before selecting Install.
+4. Open Command Prompt and check the installation: `python --version`
+
+
+
+## 3. Set up the project
+
+Place `genome_clean.py`, and `genomic_data_2.csv` in the same folder. Open a terminal/Command Prompt in that folder.
+
+
+python -m pip install --upgrade pip
+python -m pip install pandas numpy matplotlib openpyxl tabulate
+
+or individually as 
+
+python -m pip install --upgrade pip
+python -m pip install pandas 
+python -m pip install numpy 
+python -m pip install openpyxl
+python -m pip install matplotlib 
+python -m pip install tabulate
+
+
+## 4. Start the program
+
+From the project folder, run:
+
+`python genome_clean.py`
+
+If necessary, use `py genome_clean.py`.
+
+At the file prompt, enter `genomic_data_2.csv` if it is in the current folder.
+
+The program displays the CSV's summary including dimensions, column names, and first five rows. Confirm that the data is correct before continuing.
+
+## 5. Menu guide
+
+1. **Automated Data Clean** — chooses a sequence column and applies the standard cleaning process: uppercase/whitespace normalisation, remove leading/trailing `N`, remove characters other than `A/C/G/T/N`, remove sequences containing remaining `N`, and remove blank sequences.
+2. **User Directed Data Clean** — asks which cleaning operations to apply. Blank sequences are always removed. If normalisation is declined, the program still validates DNA symbols case-insensitively.
+3. **View Data Frame (Summary) Information** — shows the shape, column types, and first five rows of the original or generated data. Missing cleaned tables can be created from this menu.
+4. **Calculate A, C, G, T, N per-base values** — counts each base for every sequence, prints the average count and flags rows more than three standard deviations from the mean.
+5. **Calculate GC content** — calculates `100 × (G + C) / (A + C + G + T)`. Unknown `N` bases are excluded from the denominator. Rows with no countable A/C/G/T bases have missing GC content and are reported as excluded.
+6. **Create a Histogram of GC content** — creates ten bins in 10-percentage-point increments and saves `output/gc_content_histogram.png`. A plot window will also open when the environment supports it.
+7. **Load another data file** — optionally saves generated tables before starting a fresh session.
+8. **Exit** — optionally saves all current tables before quitting.
+
+Use the number shown beside a menu item. If a column-selection menu offers `0`, enter `0` to return to the main menu. Type `q` at the file-path prompt to quit before opening a session. You can also interrupt the program with `Ctrl+C`.
+
+## 6. Saving your work
+
+When prompted to save, the program exports the original table and generated tables into one Excel workbook (`.xlsx`). The default name is based on the input CSV, for example `genomic_data_2_gene_cleaned.xlsx`. You may enter a different filename. The histogram is saved separately in the `output` folder.
+
+Generated tables are held in memory for the current session and are not automatically saved unless you choose to save them.
+
+## 7. Input data expectations
+
+The sequence column should contain DNA strings made up of `A`, `C`, `G`, `T`, and optionally `N`. Cleaning removes or reports values according to the selected cleaning mode. The program preserves all other columns, such as `Sequence ID` and `Organism`, so you can identify each sequence after processing.
+
+## 8. Troubleshooting
+
+- **`python` is not recognised:** reinstall Python with “Add Python to PATH” enabled, or use `py` on Windows / `python3` on macOS and Linux.
+- **`ModuleNotFoundError`:** run the package installation command in section 3.
+- **CSV not found:** check that the terminal is in the correct folder, or enter the full file path.
+- **Plot does not open:** check the `output/gc_content_histogram.png` file; saving can work in environments without a graphical display.
+- **Excel save fails:** ensure `openpyxl` is installed and that the destination folder is writable.
+
+## 9. Scientific interpretation notes
+
+- DNA sequence matching is case-insensitive for validation and base counting.
+- `N` represents an unknown base. GC content excludes `N` from its denominator rather than treating it as a known base.
+- Automated cleaning removes any sequence that still contains `N` after leading/trailing `N` removal. User-directed cleaning asks whether to remove rows containing `N`.
+- Cleaning reports list sequence identifiers when a recognisable ID column exists; otherwise, they list row indexes.
+
+## 10. Links to Material accessed for some parts of this work
+1. Google Style Guide: https://google.github.io/styleguide/pyguide.html#316-naming
+
+2. YouTube Regex Tutorial: https://www.youtube.com/watch?v=_mDU0-yivXE
+
+3. Stack Overflow Regex Example: https://stackoverflow.com/questions/3984539/python-use-regular-expression-to-remove-the-white-space-from-all-lines
+
+4. Lecture Notes: Harris, S. (2026) 'Strings, Input, Errors, Comments' [Lecture Jupyter Notebook], Introduction to Programming and Data Management. University of Suffolk. 21 September. Available at: https://brightspace.uos.ac.uk (Accessed: 15 October 2026).
+
+5. Real Python Linting Material: https://realpython.com/python-pep8/
+
+6. Real Python Documenting Material: https://realpython.com/documenting-python-code/
+
+7. Python official docs: https://peps.python.org/pep-0008/#prescriptive-naming-conventions
+
+8. Internet article on naming conventions: https://www.joelonsoftware.com/2005/05/11/making-wrong-code-look-wrong/
+
+
+
+
