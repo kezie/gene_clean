@@ -8,8 +8,7 @@
 # openpyxl 3.1.5 is used for writing (saving) Excel files
 
 # ##################################################################
-# Candidate Name: Chikezie Oguamanam
-# Student Number: S341113
+# Author Name: Chikezie Oguamanam
 # Date: 19th October, 2026
 # ##################################################################
 

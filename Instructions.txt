@@ -1,5 +1,3 @@
-# Candidate Name: Chikezie Oguamanam
-# Student Number: S341113
 # Date: 19th October, 2026
 
 # genome_clean: DNA Sequence Cleaning and Analysis
@@ -112,8 +110,6 @@ The sequence column should contain DNA strings made up of `A`, `C`, `G`, `T`, an
 
 8. Internet article on naming conventions: https://www.joelonsoftware.com/2005/05/11/making-wrong-code-look-wrong/
 
-## 11. genAI Declaration Statement
 
-Claude AI was used as a Socratic-tutor to plan and structure the project. I used AI to understand the data set. AI explained what gene sequences are and the types of analysis run on genomic data in bio-informatics. AI was also used as a guide during study. To identify areas of focus and to create summaries of lengthy text.
 
 
